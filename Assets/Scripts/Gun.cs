@@ -20,12 +20,13 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
         if (Input.GetButton("Fire1") && Time.time > nextFire) 
         {
             nextFire = Time.time + fireRate;
             gunAudio.Play();
-            Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
 
             if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, range))
             {
@@ -34,6 +35,15 @@ public class Gun : MonoBehaviour
                     hit.rigidbody.AddForce(-hit.normal * impactStrength);
                 }
             }
+        }
+
+        if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, range))
+        {
+            hit.rigidbody.GetComponentInChildren<Canvas>().enabled = true;
+        }
+        else
+        {
+            hit.rigidbody.GetComponentInChildren<Canvas>().enabled = false;
         }
     }
 }

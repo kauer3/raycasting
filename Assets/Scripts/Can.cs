@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Can : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float health = 100;
+    Rigidbody rb;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void Hit()
+    {
+                    // rb.AddForce(-hit.normal * impactStrength);
     }
 }
