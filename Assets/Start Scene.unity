@@ -334,7 +334,7 @@ MonoBehaviour:
   walkSpeedBackward: 1
   normalizeMotion: 1
   avoidWalls: 0
-  gun: {fileID: 635952512}
+  gun: {fileID: 635952515}
   stoppingDistance: 0.8
   showDebug: 0
   grounded: 0
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 451376628}
   - component: {fileID: 451376630}
   m_Layer: 5
-  m_Name: Ammo Indicator
+  m_Name: Ammo_Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

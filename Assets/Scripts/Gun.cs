@@ -12,11 +12,12 @@ public class Gun : MonoBehaviour
     private float nextFire;
     private int ammo = 5;
     private Camera cam;
-    public TMP_Text ammoIndicator;
+    TMP_Text ammoIndicator;
 
     void Start()
     {
         cam = GameObject.Find("Player_Eyes").GetComponent<Camera>();
+        ammoIndicator = GameObject.Find("Ammo_Indicator").GetComponent<TMP_Text>();
         gunAudio = GetComponent<AudioSource>();
     }
 
@@ -29,7 +30,6 @@ public class Gun : MonoBehaviour
             nextFire = Time.time + fireRate;
             gunAudio.Play();
             ammo--;
-            Debug.Log(ammo);
             ammoIndicator.text = "Ammo: " + ammo;
 
 
@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
             {
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.GetComponent<Can>().Hit(-hit.normal * impactStrength, .1f);
+                    hit.rigidbody.GetComponent<Can>().Hit(-hit.normal * impactStrength, 1);
                 }
             }
         }
@@ -46,7 +46,6 @@ public class Gun : MonoBehaviour
     public void Reload(int bullets)
     {
         ammo += bullets;
-        Debug.Log(ammo);
         ammoIndicator.text = "Ammo: " + ammo;
     }
 }

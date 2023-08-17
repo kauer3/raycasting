@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Can : MonoBehaviour
 {
-    float health = .4f;
+    float health = 4;
     Rigidbody rb;
     float healthbarTimer = 0;
     [SerializeField]
@@ -30,7 +30,7 @@ public class Can : MonoBehaviour
         
     }
 
-    public void Hit(Vector3 force, float damage)
+    public void Hit(Vector3 force, int damage)
     {
         if (!canvas.enabled)
         {
@@ -40,14 +40,16 @@ public class Can : MonoBehaviour
 
         rb.AddForce(force);
         health -= damage;
+        Debug.Log(health);
 
         if (health <= 0)
         {
             Destroy(gameObject);
-        } else
+        }
+        else
         {
-            RectTransform healthbar = canvas.gameObject.GetComponentsInChildren<RectTransform>()[1];
-            healthbar.sizeDelta = new Vector2(health, 0.02f);
+            RectTransform healthbar = canvas.gameObject.GetComponentsInChildren<RectTransform>()[2];
+            healthbar.sizeDelta = new Vector2(health/10, 0.02f);
         }
     }
 }
