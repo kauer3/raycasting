@@ -40,7 +40,6 @@ public class Can : MonoBehaviour
 
         rb.AddForce(force);
         health -= damage;
-        Debug.Log(health);
 
         if (health <= 0)
         {
@@ -49,7 +48,7 @@ public class Can : MonoBehaviour
         else
         {
             RectTransform healthbar = canvas.gameObject.GetComponentsInChildren<RectTransform>()[2];
-            healthbar.sizeDelta = new Vector2(health/10, 0.02f);
+            healthbar.sizeDelta = new Vector2(health / 10, 0.02f);
         }
     }
 }
